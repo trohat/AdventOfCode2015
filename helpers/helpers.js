@@ -94,3 +94,17 @@ let ord = str => str.charCodeAt(0);
 
 // numpy.zeros()
 const zeros = length => Array.from({ length }).map(() => 0);
+
+// combinatorics
+const getAllPermutations = (arr) => {
+    if (arr.length === 1) return [[...arr]];
+    const permutations = [];
+    arr.forEach((d, index) => {
+        let newArr = [...arr];
+        newArr.splice(index, 1);
+        getAllPermutations(newArr).forEach((newD) => {
+            permutations.push([d, ...newD]);
+        });
+    });
+    return permutations;
+};

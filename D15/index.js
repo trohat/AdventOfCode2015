@@ -24,11 +24,12 @@ const task = (ingredients, task) => {
                     let calories = i * ingredients[0][property] + j * ingredients[1][property] + k * ingredients[2][property] + m * ingredients[3][property];
                     if (calories !== 500) continue;
                 }
-                const score = properties.reduce((acc, property) => {
+                let score = 1;
+                for (const property of properties) {
                     let result = i * ingredients[0][property] + j * ingredients[1][property] + k * ingredients[2][property] + m * ingredients[3][property];
-                    if (result < 0) result = 0;
-                    return result * acc;
-                }, 1);
+                    score *= result;
+                    if (score <= 0) break;
+                }
                 if (score > bestCake) bestCake = score;
             }
         }

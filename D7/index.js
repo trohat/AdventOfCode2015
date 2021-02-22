@@ -16,7 +16,7 @@ String.prototype.isNumber = function () {
     return this == Number(this);
 };
 
-const task = (circuit, test, task) => {
+const task = (circuit, test, bInput) => {
     const wires = {};
     //const startInsts = circuit.filter(i => i.op === undefined);
     //circuit = circuit.filter(i => !startInsts.includes(i));
@@ -32,7 +32,7 @@ const task = (circuit, test, task) => {
                 let second = i.second.isNumber() ? +i.second : wires[i.second];
                 switch (i.op) {
                     case undefined:
-                        if (task === "task2" && i.output === "b") wires.b = 956;
+                        if (bInput !== undefined && i.output === "b") wires.b = bInput;
                         else wires[i.output] = second;
                         break;
                     case "AND":
@@ -83,12 +83,14 @@ console.log("");
 
 doEqualTest(task(testdata, "test"), 65079);
 
+let newB;
+
 console.time("Task 1");
-console.log("Task 1: " + task(inputdata));
+console.log("Task 1:", newB = task(inputdata));
 console.timeEnd("Task 1");
 
 console.log("");
 
 console.time("Task 2");
-console.log("Task 2: " + task(inputdata, null, "task2"));
+console.log("Task 2:", task(inputdata, null, newB));
 console.timeEnd("Task 2");

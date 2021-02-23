@@ -78,7 +78,7 @@ String.prototype.countChar = function (char) {
     return this.split(char).length - 1;
 }
 
-String.prototype.setCharAt = function (char, index) {
+String.prototype.setCharAt = function (index, char) {
     return this.substring(0, index) + char + this.substring(index + 1);
 }
 

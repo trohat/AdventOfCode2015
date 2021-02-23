@@ -1,5 +1,7 @@
 console.log("AOC 2015 - Day 18: Like a GIF For Your Yard");
 
+// code copied from AOC 2020 - Day 11: Seating System
+
 const splitLines = data => data.split(String.fromCharCode(10));
 
 const countNeighbours = ( x,y, grid ) => {

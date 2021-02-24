@@ -42,10 +42,12 @@ const task = (boss, weapons, armor, rings, task) => {
     //me = { hp: 8, armor: 5, damage: 5};
     //boss = { hp: 12, armor: 2, damage: 7};
     //simulateFight(me, boss);
-    
-    armor.push({ name: "none", damage: 0, armor: 0, cost: 0});
-    rings.push({ name: "none", damage: 0, armor: 0, cost: 0});
-    rings.push({ name: "none", damage: 0, armor: 0, cost: 0});
+
+    if (task === undefined) {
+        armor.push({ name: "none", damage: 0, armor: 0, cost: 0});
+        rings.push({ name: "none", damage: 0, armor: 0, cost: 0});
+        rings.push({ name: "none", damage: 0, armor: 0, cost: 0});
+    }
 
     let cheapest = 10e10;
     let mostExpensive = 0;
@@ -61,8 +63,10 @@ const task = (boss, weapons, armor, rings, task) => {
                     const totalCost = weapon.cost + myArmor.cost + ring1.cost + ring2.cost;
                     if (simulateFight(me, boss)) {
                         if (totalCost < cheapest) cheapest = totalCost;
+                        if (totalCost === 111) console.log(totalCost, weapon.name, myArmor.name, ring1.name, ring2.name);
                     } else {
                         if (totalCost > mostExpensive) mostExpensive = totalCost;
+                        if (totalCost === 188) console.log(totalCost, weapon.name, myArmor.name, ring1.name, ring2.name);
                     }
                 }
             }

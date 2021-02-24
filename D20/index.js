@@ -57,7 +57,6 @@ const sumDivisorsWith50Limit = n => {
     return sum;
 };
 
-
 const task1 = presents => {
     presents /= 10;
     for (let i = 0;; i++) {
